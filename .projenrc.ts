@@ -1,4 +1,5 @@
 import { NodePackageManager, NpmAccess, JsiiProject } from "projen";
+import { ReleaseTrigger } from "projen/lib/release";
 
 const authorName = "Justin McCormick";
 const authorEmail = "me@justinmccormick.com";
@@ -22,6 +23,7 @@ const project = new JsiiProject({
   peerDeps: ["projen"],
   release: true,
   releaseToNpm: true,
+  releaseTrigger: ReleaseTrigger.continuous(),
   jest: false,
   npmAccess: NpmAccess.PUBLIC,
   docgen: true,
