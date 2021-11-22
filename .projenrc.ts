@@ -1,13 +1,55 @@
-import { TypeScriptProject } from "projen";
-const project = new TypeScriptProject({
-  defaultReleaseBranch: "main",
-  name: "yarn-projen",
-  projenrcTs: true,
+import { NodePackageManager, NpmAccess, JsiiProject } from "projen";
 
-  // deps: [],                /* Runtime dependencies of this module. */
-  // description: undefined,  /* The description is just a string that helps people understand the purpose of the package. */
-  // devDeps: [],             /* Build dependencies for this module. */
-  // packageName: undefined,  /* The "name" in package.json. */
-  // release: undefined,      /* Add release management to this project. */
+const authorName = "Justin McCormick";
+const authorEmail = "me@justinmccormick.com";
+const defaultReleaseBranch = "master";
+const repository = "git@github.com:justinm/ampdk.git";
+const license = "MIT";
+
+const project = new JsiiProject({
+  author: authorName,
+  authorAddress: authorEmail,
+  defaultReleaseBranch,
+  repositoryUrl: repository,
+  license,
+  description: "A projen project for managing monorepos using Yarn workspaces",
+  name: "yarn-project",
+  keywords: ["yarn", "monorepo", "projen", "typescript"],
+  majorVersion: 0,
+  projenrcTs: true,
+  packageName: "yarn-projen",
+  packageManager: NodePackageManager.YARN,
+  peerDeps: ["projen"],
+  release: true,
+  releaseToNpm: true,
+  jest: false,
+  npmAccess: NpmAccess.PUBLIC,
+  docgen: true,
+  tsconfig: {
+    compilerOptions: {
+      lib: ["es2019"],
+    },
+  },
+  minNodeVersion: "14.17.0",
+  depsUpgradeOptions: {
+    ignoreProjen: false,
+  },
+  eslint: true,
+  eslintOptions: {
+    dirs: ["src"],
+    ignorePatterns: ["node_modules"],
+    prettier: true,
+    lintProjenRc: true,
+  },
+  gitignore: [".yalc", ".idea"],
+  vscode: true,
+  scripts: {
+    yalc: "npx yalc publish",
+  },
 });
+
+project.eslint?.addRules({
+  "@typescript-eslint/no-shadow": 0,
+});
+
 project.synth();
