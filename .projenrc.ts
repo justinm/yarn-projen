@@ -25,6 +25,11 @@ const project = new JsiiProject({
   releaseToNpm: true,
   releaseTrigger: ReleaseTrigger.continuous(),
   dependabot: true,
+  github: true,
+  githubOptions: {
+    workflows: true,
+    mergify: true,
+  },
   jest: false,
   npmAccess: NpmAccess.PUBLIC,
   docgen: true,

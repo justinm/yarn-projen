@@ -1,14 +1,30 @@
-import { NodePackageManager, NodeProject, NodeProjectOptions } from "projen";
+import {
+  Jest,
+  NodePackageManager,
+  NodeProject,
+  NodeProjectOptions,
+  TypescriptConfig,
+  TypescriptConfigOptions,
+} from "projen";
 import { DependencyType } from "projen/lib/deps";
 
 export interface YarnWorkspaceProjectOptions extends NodeProjectOptions {
-  readonly projenrcTs: boolean;
+  /**
+   * Indicates this project as typescript based
+   */
+  readonly typescript: boolean;
+  /**
+   * If typescript and jest is enabled, this property is required for proper Jest/Typescript configuration.
+   */
+  readonly typescriptConfig?: TypescriptConfigOptions;
 }
 
 /**
  * YarnWorkspaceProjects use Yarn Workspaces to setup mono repositories.
  */
 export class YarnWorkspaceProject extends NodeProject {
+  public readonly jest?: Jest;
+  public readonly typescriptConfig?: TypescriptConfig;
   private readonly workspaces: Record<string, NodeProject | string> = {};
   private readonly links: {
     project: NodeProject;
@@ -26,9 +42,24 @@ export class YarnWorkspaceProject extends NodeProject {
 
     this.package.addField("private", true);
 
-    if (options.projenrcTs) {
+    if (options.jest) {
+      this.jest = new Jest(this, options.jestOptions);
+    }
+
+    if (options.typescript) {
+      this.typescriptConfig = new TypescriptConfig(this, {
+        compilerOptions: {
+          declaration: true,
+          esModuleInterop: true,
+          lib: ["es2019"],
+        },
+      });
+
       this.package.addDevDeps("typescript", "ts-node");
       this.command = "ts-node --skip-project .projenrc.ts";
+      if (this.jest) {
+        this.jest.addTypeScriptSupport(this.typescriptConfig);
+      }
     } else {
       this.command = "node .projenrc.js";
     }

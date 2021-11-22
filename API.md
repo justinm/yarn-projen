@@ -1430,13 +1430,27 @@ The node version to use in GitHub workflows.
 
 ---
 
-##### `projenrcTs`<sup>Required</sup> <a name="yarn-projen.YarnWorkspaceProjectOptions.property.projenrcTs"></a>
+##### `typescript`<sup>Required</sup> <a name="yarn-projen.YarnWorkspaceProjectOptions.property.typescript"></a>
 
 ```typescript
-public readonly projenrcTs: boolean;
+public readonly typescript: boolean;
 ```
 
 - *Type:* `boolean`
+
+Indicates this project as typescript based.
+
+---
+
+##### `typescriptConfig`<sup>Optional</sup> <a name="yarn-projen.YarnWorkspaceProjectOptions.property.typescriptConfig"></a>
+
+```typescript
+public readonly typescriptConfig: TypescriptConfigOptions;
+```
+
+- *Type:* [`projen.TypescriptConfigOptions`](#projen.TypescriptConfigOptions)
+
+If typescript and jest is enabled, this property is required for proper Jest/Typescript configuration.
 
 ---
 
@@ -1507,6 +1521,29 @@ public preSynthesize()
 ```
 
 
+#### Properties <a name="Properties"></a>
+
+##### `jest`<sup>Optional</sup> <a name="yarn-projen.YarnWorkspaceProject.property.jest"></a>
+
+```typescript
+public readonly jest: Jest;
+```
+
+- *Type:* [`projen.Jest`](#projen.Jest)
+
+(experimental) The Jest configuration (if enabled).
+
+---
+
+##### `typescriptConfig`<sup>Optional</sup> <a name="yarn-projen.YarnWorkspaceProject.property.typescriptConfig"></a>
+
+```typescript
+public readonly typescriptConfig: TypescriptConfig;
+```
+
+- *Type:* [`projen.TypescriptConfig`](#projen.TypescriptConfig)
+
+---
 
 
 
