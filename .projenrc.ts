@@ -3,7 +3,7 @@ import { ReleaseTrigger } from "projen/lib/release";
 
 const authorName = "Justin McCormick";
 const authorEmail = "me@justinmccormick.com";
-const defaultReleaseBranch = "master";
+const defaultReleaseBranch = "main";
 const repository = "git@github.com:justinm/ampdk.git";
 const license = "MIT";
 
