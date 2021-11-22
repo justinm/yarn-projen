@@ -24,6 +24,7 @@ const project = new JsiiProject({
   release: true,
   releaseToNpm: true,
   releaseTrigger: ReleaseTrigger.continuous(),
+  dependabot: true,
   jest: false,
   npmAccess: NpmAccess.PUBLIC,
   docgen: true,

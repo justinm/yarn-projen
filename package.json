@@ -22,7 +22,7 @@
     "release": "npx projen release",
     "test": "npx projen test",
     "unbump": "npx projen unbump",
-    "upgrade": "npx projen upgrade",
+    "upgrade-projen": "npx projen upgrade-projen",
     "watch": "npx projen watch",
     "yalc": "npx projen yalc",
     "projen": "npx projen"
