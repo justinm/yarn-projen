@@ -1430,7 +1430,31 @@ The node version to use in GitHub workflows.
 
 ---
 
-##### `typescript`<sup>Required</sup> <a name="yarn-projen.YarnWorkspaceProjectOptions.property.typescript"></a>
+##### `eslint`<sup>Optional</sup> <a name="yarn-projen.YarnWorkspaceProjectOptions.property.eslint"></a>
+
+```typescript
+public readonly eslint: boolean;
+```
+
+- *Type:* `boolean`
+
+Indicates this project should enable eslint.
+
+---
+
+##### `eslintConfig`<sup>Optional</sup> <a name="yarn-projen.YarnWorkspaceProjectOptions.property.eslintConfig"></a>
+
+```typescript
+public readonly eslintConfig: EslintOptions;
+```
+
+- *Type:* [`projen.EslintOptions`](#projen.EslintOptions)
+
+If eslint is enabled, provide options for its configuration.
+
+---
+
+##### `typescript`<sup>Optional</sup> <a name="yarn-projen.YarnWorkspaceProjectOptions.property.typescript"></a>
 
 ```typescript
 public readonly typescript: boolean;
@@ -1522,6 +1546,16 @@ public preSynthesize()
 
 
 #### Properties <a name="Properties"></a>
+
+##### `eslint`<sup>Optional</sup> <a name="yarn-projen.YarnWorkspaceProject.property.eslint"></a>
+
+```typescript
+public readonly eslint: Eslint;
+```
+
+- *Type:* [`projen.Eslint`](#projen.Eslint)
+
+---
 
 ##### `jest`<sup>Optional</sup> <a name="yarn-projen.YarnWorkspaceProject.property.jest"></a>
 

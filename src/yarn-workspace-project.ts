@@ -1,4 +1,6 @@
 import {
+  Eslint,
+  EslintOptions,
   Jest,
   NodePackageManager,
   NodeProject,
@@ -12,11 +14,19 @@ export interface YarnWorkspaceProjectOptions extends NodeProjectOptions {
   /**
    * Indicates this project as typescript based
    */
-  readonly typescript: boolean;
+  readonly typescript?: boolean;
   /**
    * If typescript and jest is enabled, this property is required for proper Jest/Typescript configuration.
    */
   readonly typescriptConfig?: TypescriptConfigOptions;
+  /**
+   * Indicates this project should enable eslint
+   */
+  readonly eslint?: boolean;
+  /**
+   * If eslint is enabled, provide options for its configuration
+   */
+  readonly eslintConfig?: EslintOptions;
 }
 
 /**
@@ -24,6 +34,7 @@ export interface YarnWorkspaceProjectOptions extends NodeProjectOptions {
  */
 export class YarnWorkspaceProject extends NodeProject {
   public readonly jest?: Jest;
+  public readonly eslint?: Eslint;
   public readonly typescriptConfig?: TypescriptConfig;
   private readonly workspaces: Record<string, NodeProject | string> = {};
   private readonly links: {
@@ -44,6 +55,10 @@ export class YarnWorkspaceProject extends NodeProject {
 
     if (options.jest) {
       this.jest = new Jest(this, options.jestOptions);
+    }
+
+    if (options.eslint && options.eslintConfig) {
+      this.eslint = new Eslint(this, options.eslintConfig);
     }
 
     if (options.typescript) {
