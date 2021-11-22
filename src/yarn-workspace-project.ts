@@ -46,7 +46,6 @@ export class YarnWorkspaceProject extends NodeProject {
       outdir = workspace;
     } else {
       outdir = workspace.outdir;
-      this._addSubProject(workspace);
     }
 
     if (!outdir && !outdir.startsWith(this.outdir)) {
