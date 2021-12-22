@@ -23,7 +23,7 @@ const yarnWorkspaceProjectOptions: YarnWorkspaceProjectOptions = { ... }
 | [`parent`](#yarnprojenyarnworkspaceprojectoptionspropertyparent) | [`projen.Project`](#projen.Project) | The parent project, if this project is part of a bigger project. |
 | [`projenCommand`](#yarnprojenyarnworkspaceprojectoptionspropertyprojencommand) | `string` | The shell command to use in order to run the projen CLI. |
 | [`projenrcJson`](#yarnprojenyarnworkspaceprojectoptionspropertyprojenrcjson) | `boolean` | Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .projenrc.json generation. |
-| [`projenrcJsonOptions`](#yarnprojenyarnworkspaceprojectoptionspropertyprojenrcjsonoptions) | [`projen.json.ProjenrcOptions`](#projen.json.ProjenrcOptions) | Options for .projenrc.json. |
+| [`projenrcJsonOptions`](#yarnprojenyarnworkspaceprojectoptionspropertyprojenrcjsonoptions) | [`projen.ProjenrcOptions`](#projen.ProjenrcOptions) | Options for .projenrc.json. |
 | [`autoApproveOptions`](#yarnprojenyarnworkspaceprojectoptionspropertyautoapproveoptions) | [`projen.github.AutoApproveOptions`](#projen.github.AutoApproveOptions) | Enable and configure the 'auto approve' workflow. |
 | [`autoMergeOptions`](#yarnprojenyarnworkspaceprojectoptionspropertyautomergeoptions) | [`projen.github.AutoMergeOptions`](#projen.github.AutoMergeOptions) | Configure options for automatic merging on GitHub. |
 | [`clobber`](#yarnprojenyarnworkspaceprojectoptionspropertyclobber) | `boolean` | Add a `clobber` task which resets the repo to origin. |
@@ -46,7 +46,7 @@ const yarnWorkspaceProjectOptions: YarnWorkspaceProjectOptions = { ... }
 | [`autoDetectBin`](#yarnprojenyarnworkspaceprojectoptionspropertyautodetectbin) | `boolean` | Automatically add all executables under the `bin` directory to your `package.json` file under the `bin` section. |
 | [`bin`](#yarnprojenyarnworkspaceprojectoptionspropertybin) | {[ key: string ]: `string`} | Binary programs vended with your module. |
 | [`bundledDeps`](#yarnprojenyarnworkspaceprojectoptionspropertybundleddeps) | `string`[] | List of dependencies to bundle into this module. |
-| [`codeArtifactOptions`](#yarnprojenyarnworkspaceprojectoptionspropertycodeartifactoptions) | [`projen.CodeArtifactOptions`](#projen.CodeArtifactOptions) | Options for publishing npm package to AWS CodeArtifact. |
+| [`codeArtifactOptions`](#yarnprojenyarnworkspaceprojectoptionspropertycodeartifactoptions) | [`projen.javascript.CodeArtifactOptions`](#projen.javascript.CodeArtifactOptions) | Options for publishing npm package to AWS CodeArtifact. |
 | [`deps`](#yarnprojenyarnworkspaceprojectoptionspropertydeps) | `string`[] | Runtime dependencies of this module. |
 | [`description`](#yarnprojenyarnworkspaceprojectoptionspropertydescription) | `string` | The description is just a string that helps people understand the purpose of the package. |
 | [`devDeps`](#yarnprojenyarnworkspaceprojectoptionspropertydevdeps) | `string`[] | Build dependencies for this module. |
@@ -57,14 +57,13 @@ const yarnWorkspaceProjectOptions: YarnWorkspaceProjectOptions = { ... }
 | [`licensed`](#yarnprojenyarnworkspaceprojectoptionspropertylicensed) | `boolean` | Indicates if a license should be added. |
 | [`maxNodeVersion`](#yarnprojenyarnworkspaceprojectoptionspropertymaxnodeversion) | `string` | Minimum node.js version to require via `engines` (inclusive). |
 | [`minNodeVersion`](#yarnprojenyarnworkspaceprojectoptionspropertyminnodeversion) | `string` | Minimum Node.js version to require via package.json `engines` (inclusive). |
-| [`npmAccess`](#yarnprojenyarnworkspaceprojectoptionspropertynpmaccess) | [`projen.NpmAccess`](#projen.NpmAccess) | Access level of the npm package. |
-| [`npmDistTag`](#yarnprojenyarnworkspaceprojectoptionspropertynpmdisttag) | `string` | Tags can be used to provide an alias instead of version numbers. |
+| [`npmAccess`](#yarnprojenyarnworkspaceprojectoptionspropertynpmaccess) | [`projen.javascript.NpmAccess`](#projen.javascript.NpmAccess) | Access level of the npm package. |
 | [`npmRegistry`](#yarnprojenyarnworkspaceprojectoptionspropertynpmregistry) | `string` | The host name of the npm registry to publish to. |
 | [`npmRegistryUrl`](#yarnprojenyarnworkspaceprojectoptionspropertynpmregistryurl) | `string` | The base URL of the npm package registry. |
 | [`npmTokenSecret`](#yarnprojenyarnworkspaceprojectoptionspropertynpmtokensecret) | `string` | GitHub secret which contains the NPM token to use when publishing packages. |
-| [`packageManager`](#yarnprojenyarnworkspaceprojectoptionspropertypackagemanager) | [`projen.NodePackageManager`](#projen.NodePackageManager) | The Node Package Manager used to execute scripts. |
+| [`packageManager`](#yarnprojenyarnworkspaceprojectoptionspropertypackagemanager) | [`projen.javascript.NodePackageManager`](#projen.javascript.NodePackageManager) | The Node Package Manager used to execute scripts. |
 | [`packageName`](#yarnprojenyarnworkspaceprojectoptionspropertypackagename) | `string` | The "name" in package.json. |
-| [`peerDependencyOptions`](#yarnprojenyarnworkspaceprojectoptionspropertypeerdependencyoptions) | [`projen.PeerDependencyOptions`](#projen.PeerDependencyOptions) | Options for `peerDeps`. |
+| [`peerDependencyOptions`](#yarnprojenyarnworkspaceprojectoptionspropertypeerdependencyoptions) | [`projen.javascript.PeerDependencyOptions`](#projen.javascript.PeerDependencyOptions) | Options for `peerDeps`. |
 | [`peerDeps`](#yarnprojenyarnworkspaceprojectoptionspropertypeerdeps) | `string`[] | Peer dependencies for this module. |
 | [`repository`](#yarnprojenyarnworkspaceprojectoptionspropertyrepository) | `string` | The repository is the location where the actual code for your package lives. |
 | [`repositoryDirectory`](#yarnprojenyarnworkspaceprojectoptionspropertyrepositorydirectory) | `string` | If the package.json for your package is not in the root directory (for example if it is part of a monorepo), you can specify the directory in which it lives. |
@@ -74,8 +73,10 @@ const yarnWorkspaceProjectOptions: YarnWorkspaceProjectOptions = { ... }
 | [`artifactsDirectory`](#yarnprojenyarnworkspaceprojectoptionspropertyartifactsdirectory) | `string` | A directory which will contain artifacts to be published to npm. |
 | [`jsiiReleaseVersion`](#yarnprojenyarnworkspaceprojectoptionspropertyjsiireleaseversion) | `string` | Version requirement of `jsii-release` which is used to publish modules to npm. |
 | [`majorVersion`](#yarnprojenyarnworkspaceprojectoptionspropertymajorversion) | `number` | Major version to release from the default branch. |
+| [`npmDistTag`](#yarnprojenyarnworkspaceprojectoptionspropertynpmdisttag) | `string` | The npmDistTag to use when publishing from the default branch. |
 | [`postBuildSteps`](#yarnprojenyarnworkspaceprojectoptionspropertypostbuildsteps) | [`projen.github.workflows.JobStep`](#projen.github.workflows.JobStep)[] | Steps to execute after build as part of the release workflow. |
 | [`prerelease`](#yarnprojenyarnworkspaceprojectoptionspropertyprerelease) | `string` | Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre"). |
+| [`publishTasks`](#yarnprojenyarnworkspaceprojectoptionspropertypublishtasks) | `boolean` | Define publishing tasks that can be executed manually as well as workflows. |
 | [`releaseBranches`](#yarnprojenyarnworkspaceprojectoptionspropertyreleasebranches) | {[ key: string ]: [`projen.release.BranchOptions`](#projen.release.BranchOptions)} | Defines additional release branches. |
 | [`releaseEveryCommit`](#yarnprojenyarnworkspaceprojectoptionspropertyreleaseeverycommit) | `boolean` | Automatically release new versions every commit to one of branches in `releaseBranches`. |
 | [`releaseFailureIssue`](#yarnprojenyarnworkspaceprojectoptionspropertyreleasefailureissue) | `boolean` | Create a github issue on every failed publishing task. |
@@ -87,6 +88,7 @@ const yarnWorkspaceProjectOptions: YarnWorkspaceProjectOptions = { ... }
 | [`releaseWorkflowSetupSteps`](#yarnprojenyarnworkspaceprojectoptionspropertyreleaseworkflowsetupsteps) | [`projen.github.workflows.JobStep`](#projen.github.workflows.JobStep)[] | A set of workflow steps to execute in order to setup the workflow container. |
 | [`versionrcOptions`](#yarnprojenyarnworkspaceprojectoptionspropertyversionrcoptions) | {[ key: string ]: `any`} | Custom configuration used when creating changelog with standard-version package. |
 | [`workflowContainerImage`](#yarnprojenyarnworkspaceprojectoptionspropertyworkflowcontainerimage) | `string` | Container image to use for GitHub workflows. |
+| [`workflowRunsOn`](#yarnprojenyarnworkspaceprojectoptionspropertyworkflowrunson) | `string`[] | Github Runner selection labels. |
 | [`defaultReleaseBranch`](#yarnprojenyarnworkspaceprojectoptionspropertydefaultreleasebranch)<span title="Required">*</span> | `string` | The name of the main release branch. |
 | [`autoApproveProjenUpgrades`](#yarnprojenyarnworkspaceprojectoptionspropertyautoapproveprojenupgrades) | `boolean` | Automatically approve projen upgrade PRs, allowing them to be merged by mergify (if configued). |
 | [`autoApproveUpgrades`](#yarnprojenyarnworkspaceprojectoptionspropertyautoapproveupgrades) | `boolean` | Automatically approve deps upgrade PRs, allowing them to be merged by mergify (if configued). |
@@ -99,10 +101,10 @@ const yarnWorkspaceProjectOptions: YarnWorkspaceProjectOptions = { ... }
 | [`dependabot`](#yarnprojenyarnworkspaceprojectoptionspropertydependabot) | `boolean` | Use dependabot to handle dependency upgrades. |
 | [`dependabotOptions`](#yarnprojenyarnworkspaceprojectoptionspropertydependabotoptions) | [`projen.github.DependabotOptions`](#projen.github.DependabotOptions) | Options for dependabot. |
 | [`depsUpgrade`](#yarnprojenyarnworkspaceprojectoptionspropertydepsupgrade) | `boolean` | Use github workflows to handle dependency upgrades. |
-| [`depsUpgradeOptions`](#yarnprojenyarnworkspaceprojectoptionspropertydepsupgradeoptions) | [`projen.UpgradeDependenciesOptions`](#projen.UpgradeDependenciesOptions) | Options for depsUpgrade. |
+| [`depsUpgradeOptions`](#yarnprojenyarnworkspaceprojectoptionspropertydepsupgradeoptions) | [`projen.javascript.UpgradeDependenciesOptions`](#projen.javascript.UpgradeDependenciesOptions) | Options for depsUpgrade. |
 | [`gitignore`](#yarnprojenyarnworkspaceprojectoptionspropertygitignore) | `string`[] | Additional entries to .gitignore. |
 | [`jest`](#yarnprojenyarnworkspaceprojectoptionspropertyjest) | `boolean` | Setup jest unit tests. |
-| [`jestOptions`](#yarnprojenyarnworkspaceprojectoptionspropertyjestoptions) | [`projen.JestOptions`](#projen.JestOptions) | Jest options. |
+| [`jestOptions`](#yarnprojenyarnworkspaceprojectoptionspropertyjestoptions) | [`projen.javascript.JestOptions`](#projen.javascript.JestOptions) | Jest options. |
 | [`mutableBuild`](#yarnprojenyarnworkspaceprojectoptionspropertymutablebuild) | `boolean` | Automatically update files modified during builds to pull-request branches. |
 | [`npmignore`](#yarnprojenyarnworkspaceprojectoptionspropertynpmignore) | `string`[] | Additional entries to .npmignore. |
 | [`npmignoreEnabled`](#yarnprojenyarnworkspaceprojectoptionspropertynpmignoreenabled) | `boolean` | Defines an .npmignore file. Normally this is only needed for libraries that are packaged as tarballs. |
@@ -122,9 +124,9 @@ const yarnWorkspaceProjectOptions: YarnWorkspaceProjectOptions = { ... }
 | [`workflowGitIdentity`](#yarnprojenyarnworkspaceprojectoptionspropertyworkflowgitidentity) | [`projen.github.GitIdentity`](#projen.github.GitIdentity) | The git identity to use in workflows. |
 | [`workflowNodeVersion`](#yarnprojenyarnworkspaceprojectoptionspropertyworkflownodeversion) | `string` | The node version to use in GitHub workflows. |
 | [`eslint`](#yarnprojenyarnworkspaceprojectoptionspropertyeslint) | `boolean` | Indicates this project should enable eslint. |
-| [`eslintConfig`](#yarnprojenyarnworkspaceprojectoptionspropertyeslintconfig) | [`projen.EslintOptions`](#projen.EslintOptions) | If eslint is enabled, provide options for its configuration. |
+| [`eslintConfig`](#yarnprojenyarnworkspaceprojectoptionspropertyeslintconfig) | [`projen.javascript.EslintOptions`](#projen.javascript.EslintOptions) | If eslint is enabled, provide options for its configuration. |
 | [`typescript`](#yarnprojenyarnworkspaceprojectoptionspropertytypescript) | `boolean` | Indicates this project as typescript based. |
-| [`typescriptConfig`](#yarnprojenyarnworkspaceprojectoptionspropertytypescriptconfig) | [`projen.TypescriptConfigOptions`](#projen.TypescriptConfigOptions) | If typescript and jest is enabled, this property is required for proper Jest/Typescript configuration. |
+| [`typescriptConfig`](#yarnprojenyarnworkspaceprojectoptionspropertytypescriptconfig) | [`projen.javascript.TypescriptConfigOptions`](#projen.javascript.TypescriptConfigOptions) | If typescript and jest is enabled, this property is required for proper Jest/Typescript configuration. |
 
 ---
 
@@ -215,7 +217,7 @@ Generate (once) .projenrc.json (in JSON). Set to `false` in order to disable .pr
 public readonly projenrcJsonOptions: ProjenrcOptions;
 ```
 
-- *Type:* [`projen.json.ProjenrcOptions`](#projen.json.ProjenrcOptions)
+- *Type:* [`projen.ProjenrcOptions`](#projen.ProjenrcOptions)
 - *Default:* default options
 
 Options for .projenrc.json.
@@ -520,7 +522,7 @@ public readonly bundledDeps: string[];
 
 List of dependencies to bundle into this module.
 
-These modules will be added both to the `dependencies` section and `peerDependencies` section of your `package.json`.  The recommendation is to only specify the module name here (e.g. `express`). This will behave similar to `yarn add` or `npm install` in the sense that it will add the module as a dependency to your `package.json` file with the latest version (`^`). You can specify semver requirements in the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and this will be what you `package.json` will eventually include.
+These modules will be added both to the `dependencies` section and `bundledDependencies` section of your `package.json`.  The recommendation is to only specify the module name here (e.g. `express`). This will behave similar to `yarn add` or `npm install` in the sense that it will add the module as a dependency to your `package.json` file with the latest version (`^`). You can specify semver requirements in the same syntax passed to `npm i` or `yarn add` (e.g. `express@^2`) and this will be what you `package.json` will eventually include.
 
 ---
 
@@ -530,7 +532,7 @@ These modules will be added both to the `dependencies` section and `peerDependen
 public readonly codeArtifactOptions: CodeArtifactOptions;
 ```
 
-- *Type:* [`projen.CodeArtifactOptions`](#projen.CodeArtifactOptions)
+- *Type:* [`projen.javascript.CodeArtifactOptions`](#projen.javascript.CodeArtifactOptions)
 - *Default:* undefined
 
 Options for publishing npm package to AWS CodeArtifact.
@@ -680,25 +682,10 @@ Minimum Node.js version to require via package.json `engines` (inclusive).
 public readonly npmAccess: NpmAccess;
 ```
 
-- *Type:* [`projen.NpmAccess`](#projen.NpmAccess)
+- *Type:* [`projen.javascript.NpmAccess`](#projen.javascript.NpmAccess)
 - *Default:* for scoped packages (e.g. `foo@bar`), the default is `NpmAccess.RESTRICTED`, for non-scoped packages, the default is `NpmAccess.PUBLIC`.
 
 Access level of the npm package.
-
----
-
-##### `npmDistTag`<sup>Optional</sup> <a name="yarn-projen.YarnWorkspaceProjectOptions.property.npmDistTag" id="yarnprojenyarnworkspaceprojectoptionspropertynpmdisttag"></a>
-
-```typescript
-public readonly npmDistTag: string;
-```
-
-- *Type:* `string`
-- *Default:* "latest"
-
-Tags can be used to provide an alias instead of version numbers.
-
-For example, a project might choose to have multiple streams of development and use a different tag for each stream, e.g., stable, beta, dev, canary.  By default, the `latest` tag is used by npm to identify the current version of a package, and `npm install <pkg>` (without any `@<version>` or `@<tag>` specifier) installs the latest tag. Typically, projects only use the `latest` tag for stable release versions, and use other tags for unstable versions such as prereleases.  The `next` tag is used by some projects to identify the upcoming version.
 
 ---
 
@@ -752,7 +739,7 @@ GitHub secret which contains the NPM token to use when publishing packages.
 public readonly packageManager: NodePackageManager;
 ```
 
-- *Type:* [`projen.NodePackageManager`](#projen.NodePackageManager)
+- *Type:* [`projen.javascript.NodePackageManager`](#projen.javascript.NodePackageManager)
 - *Default:* NodePackageManager.YARN
 
 The Node Package Manager used to execute scripts.
@@ -778,7 +765,7 @@ The "name" in package.json.
 public readonly peerDependencyOptions: PeerDependencyOptions;
 ```
 
-- *Type:* [`projen.PeerDependencyOptions`](#projen.PeerDependencyOptions)
+- *Type:* [`projen.javascript.PeerDependencyOptions`](#projen.javascript.PeerDependencyOptions)
 
 Options for `peerDeps`.
 
@@ -906,6 +893,21 @@ If this is specified, we bump the latest version of this major version line. If 
 
 ---
 
+##### `npmDistTag`<sup>Optional</sup> <a name="yarn-projen.YarnWorkspaceProjectOptions.property.npmDistTag" id="yarnprojenyarnworkspaceprojectoptionspropertynpmdisttag"></a>
+
+```typescript
+public readonly npmDistTag: string;
+```
+
+- *Type:* `string`
+- *Default:* "latest"
+
+The npmDistTag to use when publishing from the default branch.
+
+To set the npm dist-tag for release branches, set the `npmDistTag` property for each branch.
+
+---
+
 ##### `postBuildSteps`<sup>Optional</sup> <a name="yarn-projen.YarnWorkspaceProjectOptions.property.postBuildSteps" id="yarnprojenyarnworkspaceprojectoptionspropertypostbuildsteps"></a>
 
 ```typescript
@@ -929,6 +931,21 @@ public readonly prerelease: string;
 - *Default:* normal semantic versions
 
 Bump versions from the default branch as pre-releases (e.g. "beta", "alpha", "pre").
+
+---
+
+##### `publishTasks`<sup>Optional</sup> <a name="yarn-projen.YarnWorkspaceProjectOptions.property.publishTasks" id="yarnprojenyarnworkspaceprojectoptionspropertypublishtasks"></a>
+
+```typescript
+public readonly publishTasks: boolean;
+```
+
+- *Type:* `boolean`
+- *Default:* false
+
+Define publishing tasks that can be executed manually as well as workflows.
+
+Normally, publishing only happens within automated workflows. Enable this in order to create a publishing task for each publishing activity.
 
 ---
 
@@ -1083,6 +1100,19 @@ public readonly workflowContainerImage: string;
 - *Default:* default image
 
 Container image to use for GitHub workflows.
+
+---
+
+##### `workflowRunsOn`<sup>Optional</sup> <a name="yarn-projen.YarnWorkspaceProjectOptions.property.workflowRunsOn" id="yarnprojenyarnworkspaceprojectoptionspropertyworkflowrunson"></a>
+
+```typescript
+public readonly workflowRunsOn: string[];
+```
+
+- *Type:* `string`[]
+- *Default:* ["ubuntu-latest"]
+
+Github Runner selection labels.
 
 ---
 
@@ -1255,7 +1285,7 @@ Cannot be used in conjunction with `dependabot`.
 public readonly depsUpgradeOptions: UpgradeDependenciesOptions;
 ```
 
-- *Type:* [`projen.UpgradeDependenciesOptions`](#projen.UpgradeDependenciesOptions)
+- *Type:* [`projen.javascript.UpgradeDependenciesOptions`](#projen.javascript.UpgradeDependenciesOptions)
 - *Default:* default options
 
 Options for depsUpgrade.
@@ -1293,7 +1323,7 @@ Setup jest unit tests.
 public readonly jestOptions: JestOptions;
 ```
 
-- *Type:* [`projen.JestOptions`](#projen.JestOptions)
+- *Type:* [`projen.javascript.JestOptions`](#projen.javascript.JestOptions)
 - *Default:* default options
 
 Jest options.
@@ -1563,7 +1593,7 @@ Indicates this project should enable eslint.
 public readonly eslintConfig: EslintOptions;
 ```
 
-- *Type:* [`projen.EslintOptions`](#projen.EslintOptions)
+- *Type:* [`projen.javascript.EslintOptions`](#projen.javascript.EslintOptions)
 
 If eslint is enabled, provide options for its configuration.
 
@@ -1587,7 +1617,7 @@ Indicates this project as typescript based.
 public readonly typescriptConfig: TypescriptConfigOptions;
 ```
 
-- *Type:* [`projen.TypescriptConfigOptions`](#projen.TypescriptConfigOptions)
+- *Type:* [`projen.javascript.TypescriptConfigOptions`](#projen.javascript.TypescriptConfigOptions)
 
 If typescript and jest is enabled, this property is required for proper Jest/Typescript configuration.
 
@@ -1637,7 +1667,7 @@ public addWorkspace(workspace: string | NodeProject)
 
 ###### `workspace`<sup>Required</sup> <a name="yarn-projen.YarnWorkspaceProject.parameter.workspace" id="yarnprojenyarnworkspaceprojectparameterworkspace"></a>
 
-- *Type:* `string` | [`projen.NodeProject`](#projen.NodeProject)
+- *Type:* `string` | [`projen.javascript.NodeProject`](#projen.javascript.NodeProject)
 
 ---
 
@@ -1649,13 +1679,13 @@ public link(project: NodeProject, dependency: NodeProject, version: string)
 
 ###### `project`<sup>Required</sup> <a name="yarn-projen.YarnWorkspaceProject.parameter.project" id="yarnprojenyarnworkspaceprojectparameterproject"></a>
 
-- *Type:* [`projen.NodeProject`](#projen.NodeProject)
+- *Type:* [`projen.javascript.NodeProject`](#projen.javascript.NodeProject)
 
 ---
 
 ###### `dependency`<sup>Required</sup> <a name="yarn-projen.YarnWorkspaceProject.parameter.dependency" id="yarnprojenyarnworkspaceprojectparameterdependency"></a>
 
-- *Type:* [`projen.NodeProject`](#projen.NodeProject)
+- *Type:* [`projen.javascript.NodeProject`](#projen.javascript.NodeProject)
 
 ---
 
@@ -1678,9 +1708,9 @@ public preSynthesize()
 
 | **Name** | **Type** | **Description** |
 | --- | --- | --- |
-| [`eslint`](#yarnprojenyarnworkspaceprojectpropertyeslint) | [`projen.Eslint`](#projen.Eslint) | *No description.* |
-| [`jest`](#yarnprojenyarnworkspaceprojectpropertyjest) | [`projen.Jest`](#projen.Jest) | (experimental) The Jest configuration (if enabled). |
-| [`typescriptConfig`](#yarnprojenyarnworkspaceprojectpropertytypescriptconfig) | [`projen.TypescriptConfig`](#projen.TypescriptConfig) | *No description.* |
+| [`eslint`](#yarnprojenyarnworkspaceprojectpropertyeslint) | [`projen.javascript.Eslint`](#projen.javascript.Eslint) | *No description.* |
+| [`jest`](#yarnprojenyarnworkspaceprojectpropertyjest) | [`projen.javascript.Jest`](#projen.javascript.Jest) | (experimental) The Jest configuration (if enabled). |
+| [`typescriptConfig`](#yarnprojenyarnworkspaceprojectpropertytypescriptconfig) | [`projen.javascript.TypescriptConfig`](#projen.javascript.TypescriptConfig) | *No description.* |
 
 ---
 
@@ -1690,7 +1720,7 @@ public preSynthesize()
 public readonly eslint: Eslint;
 ```
 
-- *Type:* [`projen.Eslint`](#projen.Eslint)
+- *Type:* [`projen.javascript.Eslint`](#projen.javascript.Eslint)
 
 ---
 
@@ -1700,7 +1730,7 @@ public readonly eslint: Eslint;
 public readonly jest: Jest;
 ```
 
-- *Type:* [`projen.Jest`](#projen.Jest)
+- *Type:* [`projen.javascript.Jest`](#projen.javascript.Jest)
 
 (experimental) The Jest configuration (if enabled).
 
@@ -1712,7 +1742,7 @@ public readonly jest: Jest;
 public readonly typescriptConfig: TypescriptConfig;
 ```
 
-- *Type:* [`projen.TypescriptConfig`](#projen.TypescriptConfig)
+- *Type:* [`projen.javascript.TypescriptConfig`](#projen.javascript.TypescriptConfig)
 
 ---
 
