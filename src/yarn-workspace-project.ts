@@ -1,3 +1,4 @@
+import { DependencyType } from "projen";
 import {
   Eslint,
   EslintOptions,
@@ -7,8 +8,7 @@ import {
   NodeProjectOptions,
   TypescriptConfig,
   TypescriptConfigOptions,
-} from "projen";
-import { DependencyType } from "projen/lib/deps";
+} from "projen/lib/javascript";
 
 export interface YarnWorkspaceProjectOptions extends NodeProjectOptions {
   /**
