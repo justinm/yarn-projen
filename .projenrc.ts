@@ -1,4 +1,5 @@
-import { NodePackageManager, NpmAccess, JsiiProject } from "projen";
+import { JsiiProject } from "projen/lib/cdk";
+import { NodePackageManager, NpmAccess } from "projen/lib/javascript";
 import { ReleaseTrigger } from "projen/lib/release";
 
 const authorName = "Justin McCormick";
