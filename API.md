@@ -125,6 +125,7 @@ const yarnWorkspaceProjectOptions: YarnWorkspaceProjectOptions = { ... }
 | [`workflowNodeVersion`](#yarnprojenyarnworkspaceprojectoptionspropertyworkflownodeversion) | `string` | The node version to use in GitHub workflows. |
 | [`eslint`](#yarnprojenyarnworkspaceprojectoptionspropertyeslint) | `boolean` | Indicates this project should enable eslint. |
 | [`eslintConfig`](#yarnprojenyarnworkspaceprojectoptionspropertyeslintconfig) | [`projen.javascript.EslintOptions`](#projen.javascript.EslintOptions) | If eslint is enabled, provide options for its configuration. |
+| [`projenrcTs`](#yarnprojenyarnworkspaceprojectoptionspropertyprojenrcts) | `boolean` | Indicates this project as typescript based. |
 | [`typescript`](#yarnprojenyarnworkspaceprojectoptionspropertytypescript) | `boolean` | Indicates this project as typescript based. |
 | [`typescriptConfig`](#yarnprojenyarnworkspaceprojectoptionspropertytypescriptconfig) | [`projen.javascript.TypescriptConfigOptions`](#projen.javascript.TypescriptConfigOptions) | If typescript and jest is enabled, this property is required for proper Jest/Typescript configuration. |
 
@@ -1599,6 +1600,18 @@ If eslint is enabled, provide options for its configuration.
 
 ---
 
+##### `projenrcTs`<sup>Optional</sup> <a name="yarn-projen.YarnWorkspaceProjectOptions.property.projenrcTs" id="yarnprojenyarnworkspaceprojectoptionspropertyprojenrcts"></a>
+
+```typescript
+public readonly projenrcTs: boolean;
+```
+
+- *Type:* `boolean`
+
+Indicates this project as typescript based.
+
+---
+
 ##### `typescript`<sup>Optional</sup> <a name="yarn-projen.YarnWorkspaceProjectOptions.property.typescript" id="yarnprojenyarnworkspaceprojectoptionspropertytypescript"></a>
 
 ```typescript
@@ -1653,21 +1666,8 @@ new YarnWorkspaceProject(options: YarnWorkspaceProjectOptions)
 
 | **Name** | **Description** |
 | --- | --- |
-| [`addWorkspace`](#yarnprojenyarnworkspaceprojectaddworkspace) | Add a subproject as a workspace. |
 | [`link`](#yarnprojenyarnworkspaceprojectlink) | Create a dependency link between two workspace projects. |
 | [`preSynthesize`](#yarnprojenyarnworkspaceprojectpresynthesize) | (experimental) Called before all components are synthesized. |
-
----
-
-##### `addWorkspace` <a name="yarn-projen.YarnWorkspaceProject.addWorkspace" id="yarnprojenyarnworkspaceprojectaddworkspace"></a>
-
-```typescript
-public addWorkspace(workspace: string | NodeProject)
-```
-
-###### `workspace`<sup>Required</sup> <a name="yarn-projen.YarnWorkspaceProject.parameter.workspace" id="yarnprojenyarnworkspaceprojectparameterworkspace"></a>
-
-- *Type:* `string` | [`projen.javascript.NodeProject`](#projen.javascript.NodeProject)
 
 ---
 
