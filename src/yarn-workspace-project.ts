@@ -16,6 +16,10 @@ export interface YarnWorkspaceProjectOptions extends NodeProjectOptions {
    */
   readonly typescript?: boolean;
   /**
+   * Indicates this project as typescript based
+   */
+  readonly projenrcTs?: boolean;
+  /**
    * If typescript and jest is enabled, this property is required for proper Jest/Typescript configuration.
    */
   readonly typescriptConfig?: TypescriptConfigOptions;
@@ -36,7 +40,7 @@ export class YarnWorkspaceProject extends NodeProject {
   public readonly jest?: Jest;
   public readonly eslint?: Eslint;
   public readonly typescriptConfig?: TypescriptConfig;
-  private readonly workspaces: Record<string, NodeProject | string> = {};
+  private readonly workspaces: Record<string, NodeProject> = {};
   private readonly links: {
     project: NodeProject;
     dependency: NodeProject;
@@ -83,16 +87,11 @@ export class YarnWorkspaceProject extends NodeProject {
   /**
    * Add a subproject as a workspace
    *
+   * @internal
    * @param workspace
    */
-  addWorkspace(workspace: NodeProject | string) {
-    let outdir: string;
-
-    if (typeof workspace === "string") {
-      outdir = workspace;
-    } else {
-      outdir = workspace.outdir;
-    }
+  _addSubProject(workspace: NodeProject) {
+    const outdir = workspace.outdir;
 
     if (!outdir && !outdir.startsWith(this.outdir)) {
       throw new Error(
@@ -103,6 +102,8 @@ export class YarnWorkspaceProject extends NodeProject {
     const relativeOutDir = outdir.substring(this.outdir.length + 1);
 
     this.workspaces[relativeOutDir] = workspace;
+
+    super._addSubProject(workspace);
   }
 
   /**
@@ -139,16 +140,7 @@ export class YarnWorkspaceProject extends NodeProject {
       ".pnp.*"
     );
 
-    this.package.addField(
-      "workspaces",
-      Object.values(this.workspaces).map((workspace) => {
-        if (typeof workspace === "string") {
-          return workspace;
-        } else {
-          return workspace.outdir;
-        }
-      })
-    );
+    this.package.addField("workspaces", Object.keys(this.workspaces));
 
     this.links.forEach(({ project, dependency, version }) => {
       project.deps.addDependency(
