@@ -66,13 +66,16 @@ export class YarnWorkspaceProject extends NodeProject {
     }
 
     if (options.typescript) {
-      this.typescriptConfig = new TypescriptConfig(this, {
-        compilerOptions: {
-          declaration: true,
-          esModuleInterop: true,
-          lib: ["es2019"],
-        },
-      });
+      this.typescriptConfig = new TypescriptConfig(
+        this,
+        options.typescriptConfig ?? {
+          compilerOptions: {
+            declaration: true,
+            esModuleInterop: true,
+            lib: ["es2019"],
+          },
+        }
+      );
 
       this.package.addDevDeps("typescript", "ts-node");
       this.command = "ts-node --skip-project .projenrc.ts";
