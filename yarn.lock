@@ -75,10 +75,18 @@
     chalk "^4.1.2"
     semver "^7.3.5"
 
-"@jsii/spec@1.49.0", "@jsii/spec@^1.49.0":
-  version "1.49.0"
-  resolved "https://registry.yarnpkg.com/@jsii/spec/-/spec-1.49.0.tgz#6a5aafe41cb3301a90f642986bcfaa63c753e3b7"
-  integrity sha512-uf3wr4c/bCl52VDLQGOGQQynAvyEvwCJ2jcN83nmHhovUkxmhVlqaKt8pumOyjfB5N5SoLW5tiY7ClMQ/q8UoQ==
+"@jsii/check-node@1.52.1":
+  version "1.52.1"
+  resolved "https://registry.yarnpkg.com/@jsii/check-node/-/check-node-1.52.1.tgz#e14101294593ec41b76812acf5ba9c06e0cbfef2"
+  integrity sha512-B+vpPwXrKTWA1dBHuStp0sg+YpFZ9APjS6qeDiknMHPMatlT7VA0RVk/LmCLaPZhsfNzByJ+zhRFs0R83zTr1Q==
+  dependencies:
+    chalk "^4.1.2"
+    semver "^7.3.5"
+
+"@jsii/spec@1.52.1", "@jsii/spec@^1.49.0", "@jsii/spec@^1.52.1":
+  version "1.52.1"
+  resolved "https://registry.yarnpkg.com/@jsii/spec/-/spec-1.52.1.tgz#2e44a019e3b5722a96883c42d726b748956c223e"
+  integrity sha512-Mt5yzqR/DYZhxjOBTuQsstYh0gdlwSWvjTAfUGf5Rp76j8gddkADlrMRFeVrXBy/Y+ccJLUYWMSsEf1Ti6ERcQ==
   dependencies:
     jsonschema "^1.4.0"
 
@@ -322,10 +330,10 @@
     "@typescript-eslint/types" "5.8.0"
     eslint-visitor-keys "^3.0.0"
 
-"@xmldom/xmldom@^0.7.5":
-  version "0.7.5"
-  resolved "https://registry.yarnpkg.com/@xmldom/xmldom/-/xmldom-0.7.5.tgz#09fa51e356d07d0be200642b0e4f91d8e6dd408d"
-  integrity sha512-V3BIhmY36fXZ1OtVcI9W+FxQqxVLsPKcNjWigIaa81dLC9IolJl5Mt4Cvhmr0flUnjSpTdrbMTSbXqYqV5dT6A==
+"@xmldom/xmldom@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@xmldom/xmldom/-/xmldom-0.8.0.tgz#9f83fd9b3506c9603baad67e44eb6e6ee8eee0ce"
+  integrity sha512-7wVnF+rKrVDEo1xjzkkidTG0grclaVnX0vKa0z9JSXcEdtftUJjvU33jLGg6SHyvs3eeqEsI7jZ6NxYfRypEEg==
 
 JSONStream@^1.0.4:
   version "1.3.5"
@@ -683,10 +691,10 @@ clone@^2.1.2:
   resolved "https://registry.yarnpkg.com/clone/-/clone-2.1.2.tgz#1b7f4b9f591f1e8f83670401600345a02887435f"
   integrity sha1-G39Ln1kfHo+DZwQBYANFoCiHQ18=
 
-codemaker@^1.49.0:
-  version "1.49.0"
-  resolved "https://registry.yarnpkg.com/codemaker/-/codemaker-1.49.0.tgz#ae429001996b3942ad92fe0b7f9aeaac62a088d0"
-  integrity sha512-WtHwTvbR1uORGHNnl2D3kcPk52u21x4oQNsLC5n7r6vCXdRE7RAsy0hUi1ovt+9NQ4jvM9BfeMUdZp9o8h4oog==
+codemaker@^1.52.1:
+  version "1.52.1"
+  resolved "https://registry.yarnpkg.com/codemaker/-/codemaker-1.52.1.tgz#11e1c8382ade05af7785d2a98d32f584c27e8f9d"
+  integrity sha512-yCEUas8OlyuAu3NZ9mKopBlEnwudUrxUokSjQkw3Zk4hYkgtYJEtu1ZXuPlXtTKQYCqTPEPsUiHayTeC1qZjUA==
   dependencies:
     camelcase "^6.2.1"
     decamelize "^5.0.1"
@@ -726,7 +734,7 @@ colors@1.0.3:
   resolved "https://registry.yarnpkg.com/colors/-/colors-1.0.3.tgz#0433f44d809680fdeb60ed260f1b0c262e82a40b"
   integrity sha1-BDP0TYCWgP3rYO0mDxsMJi6CpAs=
 
-colors@^1.4.0:
+colors@1.4.0, colors@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/colors/-/colors-1.4.0.tgz#c50491479d4c1bdaed2c9ced32cf7c7dc2360f78"
   integrity sha512-a+UqTh4kgZg/SlGvfbzDHpgRu7AAQOmmqRHJnxhRZICKFUT91brVhNNt58CMWU9PsBbv3PDCZUHbVxuDiH2mtA==
@@ -2290,53 +2298,72 @@ jsii-docgen@^4.1.5:
     yargs "^16.2.0"
 
 jsii-pacmak@^1.46.0:
-  version "1.49.0"
-  resolved "https://registry.yarnpkg.com/jsii-pacmak/-/jsii-pacmak-1.49.0.tgz#eac45db5f7457e6f23916151f18127c76270966c"
-  integrity sha512-tU5N3wFAl0MrjR29JBzN96kAmm2swrMW3nK8YRdVOZDgNzhyuh0+d6tFfrS5/b6/LTV2sM+wVH6uH6w0FYWxOw==
+  version "1.52.1"
+  resolved "https://registry.yarnpkg.com/jsii-pacmak/-/jsii-pacmak-1.52.1.tgz#c904691969716f9aada1dbd254661dc2bec3d24e"
+  integrity sha512-6bIGCtfu8UAr3dmddbyqGGyFyz4TOr5aC1eo4Cqwl23v/elkzxYV8TFCra9HksVxDi6UtTYJuypnExb4gsOcgQ==
   dependencies:
-    "@jsii/check-node" "1.49.0"
-    "@jsii/spec" "^1.49.0"
+    "@jsii/check-node" "1.52.1"
+    "@jsii/spec" "^1.52.1"
     clone "^2.1.2"
-    codemaker "^1.49.0"
+    codemaker "^1.52.1"
     commonmark "^0.30.0"
     escape-string-regexp "^4.0.0"
     fs-extra "^9.1.0"
-    jsii-reflect "^1.49.0"
-    jsii-rosetta "^1.49.0"
+    jsii-reflect "^1.52.1"
+    jsii-rosetta "^1.52.1"
     semver "^7.3.5"
     spdx-license-list "^6.4.0"
     xmlbuilder "^15.1.1"
     yargs "^16.2.0"
 
-jsii-reflect@^1.49.0:
-  version "1.49.0"
-  resolved "https://registry.yarnpkg.com/jsii-reflect/-/jsii-reflect-1.49.0.tgz#b9d371dc8b94648e649a5892a7e8020a692861b0"
-  integrity sha512-aTpvvkSuinx2xtuxEz69LchQAN7eTK79s6M9512c8Ajvg0+brolHR83mzINKp/i3DWrUAZ+fb3su+PuSmqvEuQ==
+jsii-reflect@^1.49.0, jsii-reflect@^1.52.1:
+  version "1.52.1"
+  resolved "https://registry.yarnpkg.com/jsii-reflect/-/jsii-reflect-1.52.1.tgz#b634f374961e72259dd79f198aa7e6ec45a3bbb2"
+  integrity sha512-OsTquiUJkgUu5jlK2VeshLFP9mBd1NU7vhHvcJZ+0xc/u2byfzPT0Irj2o6XLp30Vx/+uGGK6Nf6KyKtmUe82w==
   dependencies:
-    "@jsii/check-node" "1.49.0"
-    "@jsii/spec" "^1.49.0"
-    colors "^1.4.0"
+    "@jsii/check-node" "1.52.1"
+    "@jsii/spec" "^1.52.1"
+    colors "1.4.0"
     fs-extra "^9.1.0"
-    oo-ascii-tree "^1.49.0"
+    oo-ascii-tree "^1.52.1"
     yargs "^16.2.0"
 
-jsii-rosetta@^1.49.0:
-  version "1.49.0"
-  resolved "https://registry.yarnpkg.com/jsii-rosetta/-/jsii-rosetta-1.49.0.tgz#0a00e447775cfbf0601d8675b8bd9a976abb3342"
-  integrity sha512-rXj3z0qssulanbqSegJIYhHZmJqwjBed4nJYIsxiUstDCM8vQ5QoewSAO4c7+EZV68EklHh3UCKBkBa5QmQ/hw==
+jsii-rosetta@^1.49.0, jsii-rosetta@^1.52.1:
+  version "1.52.1"
+  resolved "https://registry.yarnpkg.com/jsii-rosetta/-/jsii-rosetta-1.52.1.tgz#1a47b77796630b4a417cf1e9f51a5a2cba460b67"
+  integrity sha512-iFpupZWQusVYGHaUPooaO6xVAtRp+o1EOMBS2FcJBZcWGbB8fRG3zzpeMSkoqu/Pjqtu7boh45V90CXtSmVfMQ==
   dependencies:
-    "@jsii/check-node" "1.49.0"
-    "@jsii/spec" "1.49.0"
-    "@xmldom/xmldom" "^0.7.5"
+    "@jsii/check-node" "1.52.1"
+    "@jsii/spec" "1.52.1"
+    "@xmldom/xmldom" "^0.8.0"
     commonmark "^0.30.0"
     fs-extra "^9.1.0"
-    jsii "1.49.0"
+    jsii "1.52.1"
     sort-json "^2.0.0"
     typescript "~3.9.10"
     workerpool "^6.1.5"
     yargs "^16.2.0"
 
-jsii@1.49.0, jsii@^1.46.0:
+jsii@1.52.1:
+  version "1.52.1"
+  resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.52.1.tgz#cfee7359ce9a6d877eadd2b5a0dff14f618f7a55"
+  integrity sha512-kILHStPX3xeADtB/2Wda56Mzz/6KUw8xNr/k+dp84qn9YlZA81cW85tKK5biYCy/XAh5IPsWIZVFRqR8CSPMMw==
+  dependencies:
+    "@jsii/check-node" "1.52.1"
+    "@jsii/spec" "^1.52.1"
+    case "^1.6.3"
+    colors "1.4.0"
+    deep-equal "^2.0.5"
+    fs-extra "^9.1.0"
+    log4js "^6.3.0"
+    semver "^7.3.5"
+    semver-intersect "^1.4.0"
+    sort-json "^2.0.0"
+    spdx-license-list "^6.4.0"
+    typescript "~3.9.10"
+    yargs "^16.2.0"
+
+jsii@^1.46.0:
   version "1.49.0"
   resolved "https://registry.yarnpkg.com/jsii/-/jsii-1.49.0.tgz#b2536985350c24132eb3dcbbff5ad866b1b0aa85"
   integrity sha512-0/nn32SoCVgvuDSvVD8UuEwMJZbKbROuYtYQJRNN3n/O9g1jA/cj1eM95rRlu4THdWChTw0FDQxLfcuK+oEwpQ==
@@ -2984,10 +3011,10 @@ once@^1.3.0, once@^1.3.1, once@^1.4.0:
   dependencies:
     wrappy "1"
 
-oo-ascii-tree@^1.49.0:
-  version "1.49.0"
-  resolved "https://registry.yarnpkg.com/oo-ascii-tree/-/oo-ascii-tree-1.49.0.tgz#fa3a527dabb0308cdc4c6110395ca2cbbb07545c"
-  integrity sha512-Y84LTdUO7/ptZRgJqzmxgvuSDlRh23p/mag4T4NTN3TVuBlfg9pvu80Hqo5NEC2Z3GFpUTI5FgIEwiSgqWlevA==
+oo-ascii-tree@^1.52.1:
+  version "1.52.1"
+  resolved "https://registry.yarnpkg.com/oo-ascii-tree/-/oo-ascii-tree-1.52.1.tgz#cdd0d6db64a3fac734cbe98fbb8c65ad0fd04853"
+  integrity sha512-hcQSkW/WkZFWqK878X+Bo8vD2Axo9FBQBGeTLANgWOay7IVFUvLmqbFUyfovzD+/L4ak1n/BdsWfSL/0a3NT2w==
 
 optionator@^0.9.1:
   version "0.9.1"
